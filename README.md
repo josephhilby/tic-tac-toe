@@ -11,3 +11,7 @@ If you have any comments or suggestions I would love to hear them.
 5. Open a Pull Request
 
 Thanks again!
+
+## Acknowledgments
+
+This project started from the React Websites [Tic-Tac-Toe Project](https://beta.reactjs.org/learn/tutorial-tic-tac-toe)
