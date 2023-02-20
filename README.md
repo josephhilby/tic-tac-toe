@@ -1,6 +1,6 @@
 # My first React App
 
-This is just a project to get started with react and JavaScript.
+This is just a project to get started with React and JavaScript.
 
 If you have any comments or suggestions I would love to hear them.
 
