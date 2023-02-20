@@ -1,8 +1,4 @@
 import './App.css';
-import { useState } from 'react';
-import { calculateWinner } from '../components/CalculateWinner';
-import Square from '../components/Square';
-import Board from '../components/Board';
 import Game from '../components/Game';
 import { Player } from '../components/Player';
 
