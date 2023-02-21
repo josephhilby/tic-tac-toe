@@ -4,8 +4,9 @@ import Square from '../components/Square';
 import Board from '../components/Board';
 import { Player } from '../components/Player';
 
-export default function Game({player_x, player_o}) {
-  const [history, setHistory] = useState([Array(9).fill(null)]);
+export default function Game({ player_x, player_o }) {
+  const initialState = [Array(9).fill(null)];
+  const [history, setHistory] = useState(initialState);
   const [currentMove, setCurrentMove] = useState(0);
   const currentSquares = history[currentMove];
   const xIsNext = currentMove % 2 == 0;
@@ -17,15 +18,15 @@ export default function Game({player_x, player_o}) {
   }
 
   function jumpTo(nextMove) {
-    setCurrentMove(nextMove);
+      setCurrentMove(nextMove);
   }
 
   const winner = calculateWinner(currentSquares);
   let status;
-  if (winner == player_x.name) {
+  if (winner === player_x.name) {
     player_x.wins += 1;
     status = 'Winner: ' + winner;
-  } else if (winner == player_o.name) {
+  } else if (winner === player_o.name) {
     player_o.wins += 1;
     status = 'Winner: ' + winner;
   } else if (!currentSquares.includes(null)) {
@@ -35,19 +36,17 @@ export default function Game({player_x, player_o}) {
   }
 
   const moves = history.map((currentSquares, move) => {
-    let description;
-    if (move > 0) {
-      description = 'Go to move #' + move;
-    } else {
-      description = 'Go to game start';
-    }
+    var description = 'Go to move #' + move;
     return (
       <li key={move}>
         <button onClick={() => jumpTo(move)}>{description}</button>
       </li>
     );
-  }
-  );
+  });
+
+  const reset = <button onClick={() => jumpTo(0)}> Play Again? </button>
+
+  const display = (winner ? reset : moves)
 
   return (
     <div className='app'>
@@ -61,7 +60,7 @@ export default function Game({player_x, player_o}) {
           <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
         </div>
         <div className='game-info'>
-          <ol>{moves}</ol>
+          <ol>{display}</ol>
         </div>
       </div>
       <div className='player'>
